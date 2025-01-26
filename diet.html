@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nutri Verse </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .diet-generator-container {
+            margin-top: 50px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body class="goto-here">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">Nutri Verse</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span> Menu
+			</button>
+	
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="Nutrition Awareness.html" class="nav-link">Nutrition Awareness</a></li>
+					<li class="nav-item"><a href="recipe generator.html" class="nav-link">Recipe Generator</a></li>
+					<li class="nav-item"><a href="diet.html" class="nav-link">Diet Planner</a></li>
+					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+    
+
+    <div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Diet Sheet Generator</span></p>
+                    <h1 class="mb-0 bread">Diet Sheet Generator</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container diet-generator-container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form id="dietForm">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+
+                    <label for="health">Health Conditions:</label>
+                    <input type="text" id="health" name="health" placeholder="e.g., diabetes, hypertension">
+
+                    <label for="activity">Activity Level:</label>
+                    <select id="activity" name="activity" required>
+                        <option value="sedentary">Sedentary</option>
+                        <option value="lightly_active">Lightly Active</option>
+                        <option value="moderately_active">Moderately Active</option>
+                        <option value="very_active">Very Active</option>
+                    </select>
+
+                    <label for="goals">Nutritional Goals:</label>
+                    <input type="text" id="goals" name="goals" placeholder="e.g., weight loss, muscle gain" required>
+
+                    <button type="button" onclick="generateDietSheet()">Generate Diet Sheet</button>
+                </form>
+
+                <div id="result" class="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateDietSheet() {
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const health = document.getElementById('health').value;
+            const activity = document.getElementById('activity').value;
+            const goals = document.getElementById('goals').value;
+
+            // Placeholder calculations for macronutrients and vitamins
+            // In real applications, these should be based on scientific data and guidelines
+            let carbs, protein, fat, vitamins;
+
+            if (goals.toLowerCase().includes('weight loss')) {
+                carbs = 40;
+                protein = 30;
+                fat = 30;
+            } else if (goals.toLowerCase().includes('muscle gain')) {
+                carbs = 50;
+                protein = 30;
+                fat = 20;
+            } else {
+                carbs = 45;
+                protein = 25;
+                fat = 30;
+            }
+
+            // Adjustments based on activity level
+            switch(activity) {
+                case 'sedentary':
+                    carbs *= 0.9;
+                    protein *= 0.9;
+                    fat *= 0.9;
+                    break;
+                case 'lightly_active':
+                    carbs *= 1.0;
+                    protein *= 1.0;
+                    fat *= 1.0;
+                    break;
+                case 'moderately_active':
+                    carbs *= 1.1;
+                    protein *= 1.1;
+                    fat *= 1.1;
+                    break;
+                case 'very_active':
+                    carbs *= 1.2;
+                    protein *= 1.2;
+                    fat *= 1.2;
+                    break;
+            }
+
+            vitamins = "Ensure a variety of vitamins from fruits and vegetables.";
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h2>Diet Recommendations</h2>
+                <p>Age: ${age}</p>
+                <p>Gender: ${gender}</p>
+                <p>Health Conditions: ${health}</p>
+                <p>Activity Level: ${activity}</p>
+                <p>Nutritional Goals: ${goals}</p>
+                <h3>Daily Intake</h3>
+                <p>Carbohydrates: ${carbs}%</p>
+                <p>Proteins: ${protein}%</p>
+                <p>Fats: ${fat}%</p>
+                <p>Vitamins: ${vitamins}</p>
+            `;
+        }
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+
+body {
+    background-color: white;
+    color: blue;
+}
+
+h1 {
+    color: blue;
+}
+
+.st header{
+    color:aqua;
+}
+.stTextArea textarea {
+    background-color: #f7f7f7;
+    color: blue;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.stButton button {
+    background-color: #a4dc18;
+    color: white;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stButton button:hover {
+    background-color: #45a049;
+}
+
+.response {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: blue;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+}
